@@ -1,0 +1,80 @@
+{
+  "name": "MindBridge - Student Mental Health Support",
+  "short_name": "MindBridge",
+  "description": "A digital mental health support system for students",
+  "start_url": "/html/home.html",
+  "display": "standalone",
+  "background_color": "#f4f4f9",
+  "theme_color": "#4CAF50",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "assets/images/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/images/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["health", "education", "lifestyle"],
+  "lang": "en",
+  "dir": "ltr",
+  "scope": "/",
+  "screenshots": [
+    {
+      "src": "assets/images/screenshot1.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "assets/images/screenshot2.png",
+      "sizes": "750x1334",
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Start Chat",
+      "short_name": "Chat",
+      "description": "Start a conversation with our AI chatbot",
+      "url": "/html/chatbot.html",
+      "icons": [
+        {
+          "src": "assets/images/chat-icon.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Take Assessment",
+      "short_name": "Assessment",
+      "description": "Complete a mental health screening",
+      "url": "/html/screening.html",
+      "icons": [
+        {
+          "src": "assets/images/assessment-icon.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Book Session",
+      "short_name": "Booking",
+      "description": "Schedule a session with a counselor",
+      "url": "/html/booking.html",
+      "icons": [
+        {
+          "src": "assets/images/booking-icon.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ]
+}

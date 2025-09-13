@@ -1,0 +1,10 @@
+[
+    {"user_id": 1, "phq_score": 12, "gad_score": 10, "date": "2025-08-01"},
+    {"user_id": 2, "phq_score": 5, "gad_score": 4, "date": "2025-08-05"},
+    {"user_id": 3, "phq_score": 18, "gad_score": 15, "date": "2025-08-10"},
+    {"user_id": 1, "phq_score": 15, "gad_score": 12, "date": "2025-09-01"},
+    {"user_id": 4, "phq_score": 8, "gad_score": 6, "date": "2025-09-05"},
+    {"user_id": 5, "phq_score": 22, "gad_score": 18, "date": "2025-09-08"},
+    {"user_id": 2, "phq_score": 3, "gad_score": 2, "date": "2025-09-10"},
+    {"user_id": 6, "phq_score": 14, "gad_score": 11, "date": "2025-09-12"}
+]

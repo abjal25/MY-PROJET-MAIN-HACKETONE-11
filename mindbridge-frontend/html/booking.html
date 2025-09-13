@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MindBridge - Booking</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="../css/booking.css" />
+  </head>
+  <body>
+    <header class="main-header">
+      <a href="home.html" class="logo">MindBridge</a>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="home.html">Home</a></li>
+          <li><a href="chatbot.html">Chatbot</a></li>
+          <li><a href="screening.html">Screening</a></li>
+          <li><a href="booking.html" class="active">Booking</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="forum.html">Forum</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <div class="lang-selector">
+          <select id="lang-select">
+            <option value="en">English</option>
+            <option value="hi">Hindi</option>
+            <option value="gu">Gujarati</option>
+          </select>
+        </div>
+        <button class="btn btn-login">Login</button>
+        <button class="btn btn-register">Register</button>
+      </div>
+    </header>
+
+    <main class="booking-main">
+      <div class="booking-container">
+        <h2>Book a Session</h2>
+        <form id="booking-form">
+          <div class="form-group">
+            <label for="counselor-select">Choose a Counselor:</label>
+            <select id="counselor-select" required>
+              <option value="">Select a Counselor</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="date-picker">Select a Date:</label>
+            <input type="date" id="date-picker" required />
+          </div>
+          <div class="form-group">
+            <label for="time-picker">Select a Time Slot:</label>
+            <input type="time" id="time-picker" required />
+          </div>
+          <div class="form-group anonymous-toggle-group">
+            <label for="anonymous-toggle">Book Anonymously:</label>
+            <input type="checkbox" id="anonymous-toggle" />
+          </div>
+          <button type="submit" class="btn btn-primary">Confirm Booking</button>
+        </form>
+        <div class="confirmation-screen hidden" id="confirmation-screen">
+          <h3>Booking Confirmed!</h3>
+          <p>
+            Your session has been successfully booked with
+            <span id="booked-counselor"></span> on
+            <span id="booked-date"></span> at <span id="booked-time"></span>.
+          </p>
+          <p>A mock email/SMS confirmation has been sent.</p>
+          <div class="confirm-actions">
+            <button class="btn btn-secondary" id="reschedule-btn">
+              Reschedule
+            </button>
+            <button class="btn btn-danger" id="cancel-btn">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/booking.js"></script>
+  </body>
+</html>

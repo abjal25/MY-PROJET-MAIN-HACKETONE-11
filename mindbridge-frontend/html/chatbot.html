@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MindBridge - Chatbot</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="../css/chatbot.css" />
+  </head>
+  <body>
+    <header class="main-header">
+      <a href="home.html" class="logo">MindBridge</a>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="home.html">Home</a></li>
+          <li><a href="chatbot.html" class="active">Chatbot</a></li>
+          <li><a href="screening.html">Screening</a></li>
+          <li><a href="booking.html">Booking</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="forum.html">Forum</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <div class="lang-selector">
+          <select id="lang-select">
+            <option value="en">English</option>
+            <option value="hi">Hindi</option>
+            <option value="gu">Gujarati</option>
+          </select>
+        </div>
+        <button class="btn btn-login">Login</button>
+        <button class="btn btn-register">Register</button>
+      </div>
+    </header>
+
+    <main class="chatbot-main">
+      <div class="chatbot-container">
+        <div class="chat-header">
+          <h3>MindBridge AI</h3>
+          <div class="multilingual-toggle">
+            <button id="lang-toggle-btn">हिन्दी</button>
+          </div>
+        </div>
+        <div class="chat-history" id="chat-history">
+          <div class="message bot-message">
+            <div class="message-content">
+              <span class="avatar">🤖</span>
+              Hello! I'm here to listen. How are you feeling today?
+            </div>
+          </div>
+        </div>
+        <div class="sentiment-bar-container">
+          <div class="sentiment-bar" id="sentiment-bar"></div>
+        </div>
+        <div class="chat-input-area">
+          <input
+            type="text"
+            id="user-input"
+            placeholder="Type your message..."
+          />
+          <button id="send-btn">Send</button>
+          <button class="btn-escalate" id="escalate-btn">
+            Talk to a Counselor
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/chatbot.js"></script>
+  </body>
+</html>

@@ -1,0 +1,62 @@
+.dashboard-main {
+  padding: 2rem;
+}
+
+.dashboard-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.dashboard-controls {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2rem;
+}
+
+.chart-card {
+  background-color: var(--card-bg);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+}
+
+.heatmap-card {
+  grid-column: span 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#heatmap-container {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  gap: 2px;
+  border: 1px solid var(--border-color);
+}
+
+.heatmap-cell {
+  background-color: #eee;
+  transition: background-color 0.5s;
+}
+
+/* Color codes for heatmap */
+.risk-low {
+  background-color: #81c784;
+}
+.risk-moderate {
+  background-color: #ffeb3b;
+}
+.risk-high {
+  background-color: #ef5350;
+}

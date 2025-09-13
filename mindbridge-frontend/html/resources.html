@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MindBridge - Resource Hub</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="../css/resources.css" />
+  </head>
+  <body>
+    <header class="main-header">
+      <a href="home.html" class="logo">MindBridge</a>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="home.html">Home</a></li>
+          <li><a href="chatbot.html">Chatbot</a></li>
+          <li><a href="screening.html">Screening</a></li>
+          <li><a href="booking.html">Booking</a></li>
+          <li><a href="resources.html" class="active">Resources</a></li>
+          <li><a href="forum.html">Forum</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <div class="lang-selector">
+          <select id="lang-select">
+            <option value="en">English</option>
+            <option value="hi">Hindi</option>
+            <option value="gu">Gujarati</option>
+          </select>
+        </div>
+        <button class="btn btn-login">Login</button>
+        <button class="btn btn-register">Register</button>
+      </div>
+    </header>
+
+    <main class="resources-main">
+      <div class="resources-container">
+        <h2>Resource Hub</h2>
+        <p>
+          A curated collection of self-help content to support your journey.
+        </p>
+
+        <div class="resource-filters">
+          <div class="filter-group">
+            <label for="type-filter">Content Type:</label>
+            <select id="type-filter">
+              <option value="all">All</option>
+              <option value="video">Videos</option>
+              <option value="audio">Audio</option>
+              <option value="pdf">PDFs</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label for="lang-filter">Language:</label>
+            <select id="lang-filter">
+              <option value="all">All</option>
+              <option value="en">English</option>
+              <option value="hi">Hindi</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="accessibility-toggles">
+          <button id="tts-toggle" class="btn btn-secondary">
+            Text-to-Speech
+          </button>
+          <button id="font-size-toggle" class="btn btn-secondary">
+            Increase Font
+          </button>
+        </div>
+
+        <div class="resource-grid" id="resource-grid"></div>
+      </div>
+    </main>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/resources.js"></script>
+  </body>
+</html>

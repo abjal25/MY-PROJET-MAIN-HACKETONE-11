@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MindBridge - Forum</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="../css/forum.css" />
+  </head>
+  <body>
+    <header class="main-header">
+      <a href="home.html" class="logo">MindBridge</a>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="home.html">Home</a></li>
+          <li><a href="chatbot.html">Chatbot</a></li>
+          <li><a href="screening.html">Screening</a></li>
+          <li><a href="booking.html">Booking</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="forum.html" class="active">Forum</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <div class="lang-selector">
+          <select id="lang-select">
+            <option value="en">English</option>
+            <option value="hi">Hindi</option>
+            <option value="gu">Gujarati</option>
+          </select>
+        </div>
+        <button class="btn btn-login">Login</button>
+        <button class="btn btn-register">Register</button>
+      </div>
+    </header>
+
+    <main class="forum-main">
+      <div class="forum-container">
+        <h2>Anonymous Peer Forum</h2>
+        <p>
+          Connect and share your thoughts in a safe and supportive space. Your
+          identity is kept confidential.
+        </p>
+        <button class="btn btn-primary" id="new-post-btn">
+          Create New Post
+        </button>
+        <div class="post-form-container hidden" id="post-form-container">
+          <form id="new-post-form">
+            <textarea
+              id="post-content"
+              placeholder="What's on your mind?"
+            ></textarea>
+            <input
+              type="text"
+              id="post-tags"
+              placeholder="Add tags (e.g., academics, relationships)"
+            />
+            <button type="submit" class="btn btn-primary">
+              Post Anonymously
+            </button>
+          </form>
+        </div>
+        <div class="forum-threads" id="forum-threads"></div>
+      </div>
+    </main>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/forum.js"></script>
+  </body>
+</html>

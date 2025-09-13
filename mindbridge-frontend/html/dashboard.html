@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MindBridge - Dashboard</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="../css/dashboard.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <header class="main-header">
+      <a href="home.html" class="logo">MindBridge</a>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="home.html">Home</a></li>
+          <li><a href="chatbot.html">Chatbot</a></li>
+          <li><a href="screening.html">Screening</a></li>
+          <li><a href="booking.html">Booking</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="forum.html">Forum</a></li>
+          <li><a href="dashboard.html" class="active">Dashboard</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <div class="lang-selector">
+          <select id="lang-select">
+            <option value="en">English</option>
+            <option value="hi">Hindi</option>
+            <option value="gu">Gujarati</option>
+          </select>
+        </div>
+        <button class="btn btn-login">Login</button>
+        <button class="btn btn-register">Register</button>
+      </div>
+    </header>
+
+    <main class="dashboard-main">
+      <div class="dashboard-container">
+        <h2>Admin Dashboard</h2>
+        <div class="dashboard-controls">
+          <div class="toggle-group">
+            <label for="view-toggle">View:</label>
+            <select id="view-toggle">
+              <option value="aggregate">Aggregate</option>
+              <option value="anonymized">Anonymized</option>
+            </select>
+          </div>
+          <button class="btn btn-secondary" id="export-btn">Export Data</button>
+        </div>
+        <div class="dashboard-grid">
+          <div class="chart-card">
+            <h3>Screening Score Trends</h3>
+            <canvas id="screening-chart"></canvas>
+          </div>
+          <div class="chart-card">
+            <h3>Booking Activity</h3>
+            <canvas id="booking-chart"></canvas>
+          </div>
+          <div class="chart-card">
+            <h3>Forum Activity by Topic</h3>
+            <canvas id="forum-chart"></canvas>
+          </div>
+          <div class="chart-card heatmap-card">
+            <h3>Emotional Risk Heatmap</h3>
+            <div id="heatmap-container"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/dashboard.js"></script>
+  </body>
+</html>

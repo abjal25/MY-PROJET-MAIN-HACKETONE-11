@@ -1,0 +1,65 @@
+[
+    {
+        "id": "res-001",
+        "title": "Mindfulness for Beginners",
+        "type": "audio",
+        "language": "en",
+        "tags": ["meditation", "stress"],
+        "url": "assets/audio/mindfulness.mp3",
+        "description": "A guided meditation session to help you start your mindfulness journey."
+    },
+    {
+        "id": "res-002",
+        "title": "Coping with Exam Stress",
+        "type": "video",
+        "language": "en",
+        "tags": ["academics", "stress"],
+        "url": "assets/videos/exam-stress.mp4",
+        "description": "Learn effective strategies to manage stress during exam periods."
+    },
+    {
+        "id": "res-003",
+        "title": "A Guide to Managing Anxiety",
+        "type": "pdf",
+        "language": "en",
+        "tags": ["anxiety", "guide"],
+        "url": "assets/docs/anxiety-guide.pdf",
+        "description": "Comprehensive guide to understanding and managing anxiety disorders."
+    },
+    {
+        "id": "res-004",
+        "title": "तनाव प्रबंधन: एक वीडियो गाइड",
+        "type": "video",
+        "language": "hi",
+        "tags": ["stress", "academics"],
+        "url": "assets/videos/stress-hi.mp4",
+        "description": "परीक्षा के दौरान तनाव को प्रबंधित करने के लिए प्रभावी रणनीतियाँ।"
+    },
+    {
+        "id": "res-005",
+        "title": "ध्यान और एकाग्रता के लिए ऑडियो",
+        "type": "audio",
+        "language": "hi",
+        "tags": ["meditation", "focus"],
+        "url": "assets/audio/meditation-hi.mp3",
+        "description": "ध्यान और एकाग्रता बढ़ाने के लिए निर्देशित सत्र।"
+    },
+    {
+        "id": "res-006",
+        "title": "Building Healthy Relationships",
+        "type": "video",
+        "language": "en",
+        "tags": ["relationships", "social"],
+        "url": "assets/videos/relationships.mp4",
+        "description": "Tips for building and maintaining healthy relationships in college."
+    },
+    {
+        "id": "res-007",
+        "title": "Sleep Hygiene Guide",
+        "type": "pdf",
+        "language": "en",
+        "tags": ["sleep", "health"],
+        "url": "assets/docs/sleep-guide.pdf",
+        "description": "Essential tips for improving your sleep quality and establishing healthy sleep patterns."
+    }
+]

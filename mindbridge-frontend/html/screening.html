@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MindBridge - Screening</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="../css/screening.css" />
+  </head>
+  <body>
+    <header class="main-header">
+      <a href="home.html" class="logo">MindBridge</a>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="home.html">Home</a></li>
+          <li><a href="chatbot.html">Chatbot</a></li>
+          <li><a href="screening.html" class="active">Screening</a></li>
+          <li><a href="booking.html">Booking</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="forum.html">Forum</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <div class="lang-selector">
+          <select id="lang-select">
+            <option value="en">English</option>
+            <option value="hi">Hindi</option>
+            <option value="gu">Gujarati</option>
+          </select>
+        </div>
+        <button class="btn btn-login">Login</button>
+        <button class="btn btn-register">Register</button>
+      </div>
+    </header>
+
+    <main class="screening-main">
+      <div class="screening-container">
+        <h2>Mental Health Screening</h2>
+        <p>
+          This screening will help you understand your emotional well-being.
+          Your responses are anonymous and confidential.
+        </p>
+
+        <div class="progress-bar-container">
+          <div class="progress-bar" id="progress-bar"></div>
+          <div class="progress-emojis" id="progress-emojis">
+            <span>😊</span><span>😐</span><span>😟</span><span>😭</span>
+          </div>
+        </div>
+
+        <form id="phq-gad-form">
+          <h3>PHQ-9 (Depression)</h3>
+          <div class="question-list" id="phq-questions"></div>
+
+          <h3>GAD-7 (Anxiety)</h3>
+          <div class="question-list" id="gad-questions"></div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary" id="submit-btn">
+              Get My Score
+            </button>
+            <button type="button" class="btn btn-secondary" id="retake-btn">
+              Retake
+            </button>
+          </div>
+        </form>
+
+        <div class="result-box hidden" id="result-box">
+          <h4>Your Screening Score: <span id="total-score"></span></h4>
+          <p id="result-message"></p>
+          <button class="btn btn-primary" id="escalate-to-counselor">
+            Talk to a Counselor
+          </button>
+          <p><small id="escalation-warning"></small></p>
+        </div>
+      </div>
+    </main>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/screening.js"></script>
+  </body>
+</html>

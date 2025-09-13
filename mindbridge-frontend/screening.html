@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mental Health Screening - MindBridge</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/screening.css" />
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <img
+            src="assets/images/logo.png"
+            alt="MindBridge Logo"
+            class="logo"
+          />
+          <span class="brand-name">MindBridge</span>
+        </div>
+        <div class="nav-menu" id="nav-menu">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="chatbot.html" class="nav-link">AI Chatbot</a>
+          <a href="screening.html" class="nav-link active">Screening</a>
+          <a href="booking.html" class="nav-link">Book Session</a>
+          <a href="resources.html" class="nav-link">Resources</a>
+          <a href="forum.html" class="nav-link">Forum</a>
+          <a href="dashboard.html" class="nav-link">Dashboard</a>
+        </div>
+        <div class="nav-controls">
+          <select id="language-selector" class="language-selector">
+            <option value="en">English</option>
+            <option value="hi">हिन्दी</option>
+            <option value="gu">ગુજરાતી</option>
+          </select>
+          <button class="login-btn" onclick="showLoginModal()">Login</button>
+          <button class="register-btn" onclick="showRegisterModal()">
+            Register
+          </button>
+          <button class="nav-toggle" id="nav-toggle">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Screening Header -->
+    <section class="screening-header">
+      <div class="container">
+        <h1>Mental Health Screening</h1>
+        <p>
+          Take our validated assessments to understand your mental health status
+          and get personalized recommendations.
+        </p>
+        <div class="assessment-tabs">
+          <button class="tab-btn active" data-assessment="phq9">
+            PHQ-9 (Depression)
+          </button>
+          <button class="tab-btn" data-assessment="gad7">
+            GAD-7 (Anxiety)
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHQ-9 Assessment -->
+    <section class="assessment-section" id="phq9Section">
+      <div class="container">
+        <div class="assessment-card">
+          <div class="assessment-header">
+            <h2>Patient Health Questionnaire (PHQ-9)</h2>
+            <p>
+              Over the last 2 weeks, how often have you been bothered by any of
+              the following problems?
+            </p>
+            <div class="progress-container">
+              <div class="progress-bar">
+                <div class="progress-fill" id="phq9Progress"></div>
+              </div>
+              <span class="progress-text" id="phq9ProgressText"
+                >Question 1 of 9</span
+              >
+            </div>
+          </div>
+
+          <form id="phq9Form" class="assessment-form">
+            <div class="question-container" id="phq9Questions">
+              <!-- Questions will be dynamically generated -->
+            </div>
+
+            <div class="assessment-actions">
+              <button
+                type="button"
+                id="phq9Prev"
+                class="btn btn-secondary"
+                disabled
+              >
+                Previous
+              </button>
+              <button type="button" id="phq9Next" class="btn btn-primary">
+                Next
+              </button>
+              <button
+                type="submit"
+                id="phq9Submit"
+                class="btn btn-success"
+                style="display: none"
+              >
+                Submit Assessment
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- GAD-7 Assessment -->
+    <section class="assessment-section" id="gad7Section" style="display: none">
+      <div class="container">
+        <div class="assessment-card">
+          <div class="assessment-header">
+            <h2>Generalized Anxiety Disorder (GAD-7)</h2>
+            <p>
+              Over the last 2 weeks, how often have you been bothered by the
+              following problems?
+            </p>
+            <div class="progress-container">
+              <div class="progress-bar">
+                <div class="progress-fill" id="gad7Progress"></div>
+              </div>
+              <span class="progress-text" id="gad7ProgressText"
+                >Question 1 of 7</span
+              >
+            </div>
+          </div>
+
+          <form id="gad7Form" class="assessment-form">
+            <div class="question-container" id="gad7Questions">
+              <!-- Questions will be dynamically generated -->
+            </div>
+
+            <div class="assessment-actions">
+              <button
+                type="button"
+                id="gad7Prev"
+                class="btn btn-secondary"
+                disabled
+              >
+                Previous
+              </button>
+              <button type="button" id="gad7Next" class="btn btn-primary">
+                Next
+              </button>
+              <button
+                type="submit"
+                id="gad7Submit"
+                class="btn btn-success"
+                style="display: none"
+              >
+                Submit Assessment
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="results-section" id="resultsSection" style="display: none">
+      <div class="container">
+        <div class="results-card">
+          <div class="results-header">
+            <h2>Your Assessment Results</h2>
+            <p>
+              Based on your responses, here's your mental health assessment:
+            </p>
+          </div>
+
+          <div class="results-content">
+            <div class="result-item" id="phq9Result">
+              <h3>Depression Assessment (PHQ-9)</h3>
+              <div class="score-display">
+                <div class="score-circle">
+                  <span class="score-number" id="phq9Score">0</span>
+                  <span class="score-label">Score</span>
+                </div>
+                <div class="score-interpretation" id="phq9Interpretation">
+                  <h4>Minimal Depression</h4>
+                  <p>Your responses suggest minimal symptoms of depression.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="result-item" id="gad7Result">
+              <h3>Anxiety Assessment (GAD-7)</h3>
+              <div class="score-display">
+                <div class="score-circle">
+                  <span class="score-number" id="gad7Score">0</span>
+                  <span class="score-label">Score</span>
+                </div>
+                <div class="score-interpretation" id="gad7Interpretation">
+                  <h4>Minimal Anxiety</h4>
+                  <p>Your responses suggest minimal symptoms of anxiety.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="recommendations" id="recommendations">
+            <h3>Personalized Recommendations</h3>
+            <div class="recommendation-list" id="recommendationList">
+              <!-- Recommendations will be dynamically generated -->
+            </div>
+          </div>
+
+          <div class="results-actions">
+            <button
+              class="btn btn-primary"
+              onclick="window.location.href='booking.html'"
+            >
+              Book Counseling Session
+            </button>
+            <button
+              class="btn btn-secondary"
+              onclick="window.location.href='resources.html'"
+            >
+              Explore Resources
+            </button>
+            <button class="btn btn-outline" onclick="retakeAssessment()">
+              Retake Assessment
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Crisis Alert Modal -->
+    <div id="crisisModal" class="modal crisis-modal">
+      <div class="modal-content">
+        <div class="crisis-header">
+          <h2>🚨 Immediate Support Available</h2>
+        </div>
+        <div class="crisis-content">
+          <p>
+            Your responses indicate that you may be experiencing significant
+            distress. Please know that help is available and you don't have to
+            face this alone.
+          </p>
+          <div class="crisis-options">
+            <div class="crisis-option">
+              <h3>Immediate Support</h3>
+              <p>
+                <strong>National Mental Health Helpline:</strong> 1800-599-0019
+              </p>
+              <p><strong>Emergency Services:</strong> 108</p>
+              <p><strong>Crisis Text Line:</strong> Text HOME to 741741</p>
+            </div>
+            <div class="crisis-option">
+              <h3>Professional Help</h3>
+              <p>
+                Book an immediate counseling session with a licensed
+                professional.
+              </p>
+              <button
+                class="btn btn-danger"
+                onclick="window.location.href='booking.html'"
+              >
+                Book Emergency Session
+              </button>
+            </div>
+          </div>
+          <div class="crisis-actions">
+            <button class="btn btn-primary" onclick="closeModal('crisisModal')">
+              I Understand
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/screening.js"></script>
+  </body>
+</html>

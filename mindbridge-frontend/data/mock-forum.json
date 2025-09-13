@@ -1,0 +1,61 @@
+[
+    {
+        "post_id": "forum-001",
+        "author_id": "anon-1234",
+        "content": "Feeling overwhelmed with academic pressure. Any advice on how to manage stress during exams?",
+        "tags": ["academics", "stress"],
+        "date": "2025-09-10",
+        "replies": [
+            {
+                "reply_id": "reply-001",
+                "author_id": "anon-5678",
+                "content": "You're not alone! Try the 'Mindfulness for Beginners' audio in the resource hub. It helped me a lot.",
+                "date": "2025-09-10"
+            },
+            {
+                "reply_id": "reply-002",
+                "author_id": "anon-9012",
+                "content": "I'd suggest breaking down your study schedule into smaller, manageable chunks. Stay hydrated!",
+                "date": "2025-09-11"
+            }
+        ]
+    },
+    {
+        "post_id": "forum-002",
+        "author_id": "anon-3456",
+        "content": "Has anyone felt lonely after moving to a new city for college? I find it hard to make new friends.",
+        "tags": ["relationships", "loneliness"],
+        "date": "2025-09-09",
+        "replies": [
+            {
+                "reply_id": "reply-003",
+                "author_id": "anon-7890",
+                "content": "I went through the same thing! Try joining clubs or study groups. It takes time but you'll find your people.",
+                "date": "2025-09-09"
+            }
+        ]
+    },
+    {
+        "post_id": "forum-003",
+        "author_id": "anon-2468",
+        "content": "Struggling with anxiety before presentations. Any tips for public speaking confidence?",
+        "tags": ["anxiety", "academics"],
+        "date": "2025-09-08",
+        "replies": []
+    },
+    {
+        "post_id": "forum-004",
+        "author_id": "anon-1357",
+        "content": "How do you balance social life with studies? I feel like I'm missing out on both.",
+        "tags": ["academics", "relationships", "balance"],
+        "date": "2025-09-07",
+        "replies": [
+            {
+                "reply_id": "reply-004",
+                "author_id": "anon-9753",
+                "content": "It's all about quality over quantity. Focus on meaningful connections and efficient study methods.",
+                "date": "2025-09-07"
+            }
+        ]
+    }
+]
