@@ -1,1 +1,0 @@
-// js/chatbot.js logic

@@ -1,1 +1,0 @@
-// js/resources.js logic

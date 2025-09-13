@@ -1,1 +1,0 @@
-// js/forum.js logic

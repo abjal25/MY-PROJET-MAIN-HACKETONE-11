@@ -1,1 +1,0 @@
-// js/booking.js logic
