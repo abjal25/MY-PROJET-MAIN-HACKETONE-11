@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Booking</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+  <!-- Booking Page -->
+  <div class="min-h-screen bg-gray-50">
+    <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+      <!-- Header -->
+      <div class="text-center mb-8">
+        <h1 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+          Book a Counseling Session
+        </h1>
+        <p class="mt-4 text-lg text-gray-600">
+          Connect with licensed counselors who understand student life. All
+          sessions are confidential and can be booked anonymously.
+        </p>
+      </div>
+
+      <!-- Anonymous Booking Toggle -->
+      <div class="bg-white rounded-lg shadow-sm p-4 mb-6">
+        <div class="flex items-center justify-center space-x-4">
+          <label class="text-sm font-medium text-gray-700">Anonymous Booking:</label>
+          <label class="relative inline-flex items-center cursor-pointer">
+            <input type="checkbox" id="anonymous-booking" class="sr-only peer" />
+            <div
+              class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-indigo-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-indigo-600">
+            </div>
+          </label>
+          <span class="text-sm text-gray-500">Your identity will be protected</span>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Counselor Selection -->
+        <div class="lg:col-span-1">
+          <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">
+              Select a Counselor
+            </h3>
+
+            <!-- Search and Filter -->
+            <div class="mb-4">
+              <input type="text" id="counselor-search" placeholder="Search counselors..."
+                class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+            </div>
+
+            <div class="mb-4">
+              <select id="specialization-filter"
+                class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                <option value="">All Specializations</option>
+                <option value="anxiety">Anxiety & Depression</option>
+                <option value="stress">Stress Management</option>
+                <option value="relationships">Relationships</option>
+                <option value="academic">Academic Pressure</option>
+                <option value="trauma">Trauma & PTSD</option>
+              </select>
+            </div>
+
+            <!-- Counselor List -->
+            <div id="counselor-list" class="space-y-3">
+              <!-- Counselor cards will be dynamically inserted here -->
+            </div>
+          </div>
+
+          <!-- Upcoming Sessions -->
+          <div class="bg-white rounded-lg shadow-sm p-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">
+              Your Upcoming Sessions
+            </h3>
+            <div id="upcoming-sessions">
+              <div class="text-center text-gray-500 py-4">
+                <i class="fas fa-calendar-plus text-2xl mb-2"></i>
+                <p class="text-sm">No upcoming sessions</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Calendar and Booking -->
+        <div class="lg:col-span-2">
+          <!-- Selected Counselor Info -->
+          <div id="selected-counselor" class="bg-white rounded-lg shadow-sm p-6 mb-6 hidden">
+            <div class="flex items-start space-x-4">
+              <div class="w-16 h-16 bg-indigo-500 rounded-full flex items-center justify-center">
+                <span id="counselor-initials" class="text-white text-xl font-semibold">JS</span>
+              </div>
+              <div class="flex-1">
+                <h3 id="counselor-name" class="text-xl font-semibold text-gray-900">
+                  Dr. Jane Smith
+                </h3>
+                <p id="counselor-specialization" class="text-indigo-600 mb-2">
+                  Anxiety & Depression Specialist
+                </p>
+                <p id="counselor-description" class="text-gray-600 text-sm mb-3">
+                  Licensed clinical psychologist with 8 years of experience
+                  helping students navigate mental health challenges.
+                </p>
+                <div class="flex items-center space-x-4 text-sm text-gray-500">
+                  <span><i class="fas fa-star text-yellow-400 mr-1"></i>4.9 (127
+                    reviews)</span>
+                  <span><i class="fas fa-clock mr-1"></i>Available today</span>
+                  <span><i class="fas fa-language mr-1"></i>English, Hindi</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Calendar -->
+          <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-lg font-semibold text-gray-900">
+                Select Date & Time
+              </h3>
+              <div class="flex space-x-2">
+                <button id="prev-month" class="p-2 hover:bg-gray-100 rounded-md">
+                  <i class="fas fa-chevron-left"></i>
+                </button>
+                <button id="next-month" class="p-2 hover:bg-gray-100 rounded-md">
+                  <i class="fas fa-chevron-right"></i>
+                </button>
+              </div>
+            </div>
+
+            <div id="calendar-container">
+              <!-- Calendar will be dynamically generated here -->
+            </div>
+          </div>
+
+          <!-- Time Slots -->
+          <div id="time-slots-container" class="bg-white rounded-lg shadow-sm p-6 mb-6 hidden">
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">
+              Available Time Slots
+            </h3>
+            <div id="time-slots" class="grid grid-cols-2 md:grid-cols-3 gap-3">
+              <!-- Time slots will be dynamically inserted here -->
+            </div>
+          </div>
+
+          <!-- Booking Form -->
+          <div id="booking-form-container" class="bg-white rounded-lg shadow-sm p-6 hidden">
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">
+              Session Details
+            </h3>
+            <form id="booking-form">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-1">Date</label>
+                  <input type="text" id="selected-date" readonly
+                    class="w-full border border-gray-300 rounded-md px-3 py-2 bg-gray-50" />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-1">Time</label>
+                  <input type="text" id="selected-time" readonly
+                    class="w-full border border-gray-300 rounded-md px-3 py-2 bg-gray-50" />
+                </div>
+              </div>
+
+              <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700 mb-1">Session Type</label>
+                <select id="session-type"
+                  class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                  <option value="individual">Individual Session (50 min)</option>
+                  <option value="group">Group Session (60 min)</option>
+                  <option value="crisis">Crisis Support (30 min)</option>
+                </select>
+              </div>
+
+              <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700 mb-1">Preferred Communication</label>
+                <div class="space-y-2">
+                  <label class="flex items-center">
+                    <input type="radio" name="communication" value="video" checked class="mr-2" />
+                    <span class="text-sm">Video Call</span>
+                  </label>
+                  <label class="flex items-center">
+                    <input type="radio" name="communication" value="phone" class="mr-2" />
+                    <span class="text-sm">Phone Call</span>
+                  </label>
+                  <label class="flex items-center">
+                    <input type="radio" name="communication" value="chat" class="mr-2" />
+                    <span class="text-sm">Text Chat</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700 mb-1">Brief Description (Optional)</label>
+                <textarea id="session-description" rows="3"
+                  class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  placeholder="Briefly describe what you'd like to discuss..."></textarea>
+              </div>
+
+              <div class="mb-6">
+                <label class="flex items-start">
+                  <input type="checkbox" id="consent-checkbox" required class="mt-1 mr-2" />
+                  <span class="text-sm text-gray-600">
+                    I understand that this is a confidential counseling session
+                    and agree to the terms of service. I also understand that this
+                    is not a substitute for emergency mental health services.
+                  </span>
+                </label>
+              </div>
+
+              <div class="flex space-x-4">
+                <button type="submit"
+                  class="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-md font-medium transition-colors">
+                  <i class="fas fa-calendar-check mr-2"></i>
+                  Book Session
+                </button>
+                <button type="button" id="cancel-booking"
+                  class="px-6 py-3 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50 transition-colors">
+                  Cancel
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Confirmation Modal -->
+          <div id="confirmation-modal"
+            class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden items-center justify-center z-50">
+            <div class="bg-white rounded-lg p-6 max-w-md w-full mx-4">
+              <div class="text-center">
+                <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <i class="fas fa-check text-white text-2xl"></i>
+                </div>
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">
+                  Session Booked Successfully!
+                </h3>
+                <p class="text-gray-600 mb-4">
+                  Your session has been confirmed. You'll receive a confirmation
+                  email and SMS reminder.
+                </p>
+                <div class="bg-gray-50 rounded-lg p-4 mb-4">
+                  <div class="text-sm text-gray-600">
+                    <p><strong>Date:</strong> <span id="confirm-date"></span></p>
+                    <p><strong>Time:</strong> <span id="confirm-time"></span></p>
+                    <p>
+                      <strong>Counselor:</strong>
+                      <span id="confirm-counselor"></span>
+                    </p>
+                    <p><strong>Type:</strong> <span id="confirm-type"></span></p>
+                  </div>
+                </div>
+                <div class="flex space-x-3">
+                  <button id="view-sessions"
+                    class="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-md text-sm font-medium">
+                    View My Sessions
+                  </button>
+                  <button id="close-confirmation"
+                    class="flex-1 bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-md text-sm font-medium">
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    class BookingSystem {
+      constructor() {
+        this.selectedCounselor = null;
+        this.selectedDate = null;
+        this.selectedTime = null;
+        this.currentMonth = new Date().getMonth();
+        this.currentYear = new Date().getFullYear();
+        this.counselors = this.initializeCounselors();
+        this.initialize();
+      }
+
+      initialize() {
+        this.addEventListeners();
+        this.renderCounselors();
+        this.renderCalendar();
+        this.loadUpcomingSessions();
+      }
+
+      addEventListeners() {
+        // Calendar navigation
+        document
+          .getElementById("prev-month")
+          .addEventListener("click", () => this.changeMonth(-1));
+        document
+          .getElementById("next-month")
+          .addEventListener("click", () => this.changeMonth(1));
+
+        // Search and filter
+        document
+          .getElementById("counselor-search")
+          .addEventListener("input", (e) => this.filterCounselors());
+        document
+          .getElementById("specialization-filter")
+          .addEventListener("change", (e) => this.filterCounselors());
+
+        // Booking form
+        document
+          .getElementById("booking-form")
+          .addEventListener("submit", (e) => this.submitBooking(e));
+        document
+          .getElementById("cancel-booking")
+          .addEventListener("click", () => this.cancelBooking());
+
+        // Confirmation modal
+        document
+          .getElementById("close-confirmation")
+          .addEventListener("click", () => this.closeConfirmation());
+        document
+          .getElementById("view-sessions")
+          .addEventListener("click", () => this.viewSessions());
+      }
+
+      initializeCounselors() {
+        return [
+          {
+            id: 1,
+            name: "Dr. Jane Smith",
+            specialization: "anxiety",
+            specializationText: "Anxiety & Depression",
+            description:
+              "Licensed clinical psychologist with 8 years of experience helping students navigate mental health challenges.",
+            rating: 4.9,
+            reviews: 127,
+            languages: ["English", "Hindi"],
+            availability: "Available today",
+            image: "JS",
+            color: "bg-indigo-500",
+          },
+          {
+            id: 2,
+            name: "Dr. Michael Chen",
+            specialization: "stress",
+            specializationText: "Stress Management",
+            description:
+              "Specialist in stress management and academic pressure with 6 years of experience in university settings.",
+            rating: 4.8,
+            reviews: 95,
+            languages: ["English", "Gujarati"],
+            availability: "Available tomorrow",
+            image: "MC",
+            color: "bg-green-500",
+          },
+          {
+            id: 3,
+            name: "Dr. Emily Rodriguez",
+            specialization: "relationships",
+            specializationText: "Relationships & Family",
+            description:
+              "Expert in relationship counseling and family dynamics, helping students build healthy connections.",
+            rating: 4.9,
+            reviews: 156,
+            languages: ["English", "Hindi", "Spanish"],
+            availability: "Available today",
+            image: "ER",
+            color: "bg-purple-500",
+          },
+          {
+            id: 4,
+            name: "Dr. Raj Patel",
+            specialization: "academic",
+            specializationText: "Academic Pressure",
+            description:
+              "Specializes in academic stress, study anxiety, and career counseling for students.",
+            rating: 4.7,
+            reviews: 89,
+            languages: ["English", "Hindi", "Gujarati"],
+            availability: "Available today",
+            image: "RP",
+            color: "bg-orange-500",
+          },
+          {
+            id: 5,
+            name: "Dr. Sarah Johnson",
+            specialization: "trauma",
+            specializationText: "Trauma & PTSD",
+            description:
+              "Trauma-informed therapist specializing in PTSD, anxiety disorders, and crisis intervention.",
+            rating: 4.9,
+            reviews: 203,
+            languages: ["English"],
+            availability: "Available tomorrow",
+            image: "SJ",
+            color: "bg-red-500",
+          },
+        ];
+      }
+
+      renderCounselors() {
+        const container = document.getElementById("counselor-list");
+        container.innerHTML = this.counselors
+          .map(
+            (counselor) => `
+            <div class="counselor-card p-4 border border-gray-200 rounded-lg cursor-pointer hover:border-indigo-500 hover:bg-indigo-50 transition-all duration-200" 
+                 data-counselor-id="${counselor.id}">
+                <div class="flex items-start space-x-3">
+                    <div class="w-12 h-12 ${counselor.color} rounded-full flex items-center justify-center">
+                        <span class="text-white font-semibold">${counselor.image}</span>
+                    </div>
+                    <div class="flex-1">
+                        <h4 class="font-medium text-gray-900">${counselor.name}</h4>
+                        <p class="text-sm text-indigo-600">${counselor.specializationText}</p>
+                        <div class="flex items-center space-x-2 mt-1">
+                            <span class="text-xs text-gray-500">
+                                <i class="fas fa-star text-yellow-400"></i> ${counselor.rating} (${counselor.reviews})
+                            </span>
+                            <span class="text-xs text-gray-500">•</span>
+                            <span class="text-xs text-gray-500">${counselor.availability}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `
+          )
+          .join("");
+
+        // Add click event listeners
+        container.querySelectorAll(".counselor-card").forEach((card) => {
+          card.addEventListener("click", (e) => {
+            const counselorId = parseInt(card.dataset.counselorId);
+            this.selectCounselor(counselorId);
+          });
+        });
+      }
+
+      selectCounselor(counselorId) {
+        this.selectedCounselor = this.counselors.find(
+          (c) => c.id === counselorId
+        );
+
+        // Update UI
+        document.querySelectorAll(".counselor-card").forEach((card) => {
+          card.classList.remove("border-indigo-500", "bg-indigo-50");
+        });
+        document
+          .querySelector(`[data-counselor-id="${counselorId}"]`)
+          .classList.add("border-indigo-500", "bg-indigo-50");
+
+        // Show counselor details
+        this.showCounselorDetails();
+      }
+
+      showCounselorDetails() {
+        const counselor = this.selectedCounselor;
+        const container = document.getElementById("selected-counselor");
+
+        document.getElementById("counselor-initials").textContent =
+          counselor.image;
+        document.getElementById("counselor-name").textContent = counselor.name;
+        document.getElementById("counselor-specialization").textContent =
+          counselor.specializationText;
+        document.getElementById("counselor-description").textContent =
+          counselor.description;
+
+        container.classList.remove("hidden");
+      }
+
+      filterCounselors() {
+        const searchTerm = document
+          .getElementById("counselor-search")
+          .value.toLowerCase();
+        const specialization = document.getElementById(
+          "specialization-filter"
+        ).value;
+
+        const filtered = this.counselors.filter((counselor) => {
+          const matchesSearch =
+            counselor.name.toLowerCase().includes(searchTerm) ||
+            counselor.specializationText.toLowerCase().includes(searchTerm);
+          const matchesSpecialization =
+            !specialization || counselor.specialization === specialization;
+
+          return matchesSearch && matchesSpecialization;
+        });
+
+        // Re-render with filtered results
+        const container = document.getElementById("counselor-list");
+        container.innerHTML = filtered
+          .map(
+            (counselor) => `
+            <div class="counselor-card p-4 border border-gray-200 rounded-lg cursor-pointer hover:border-indigo-500 hover:bg-indigo-50 transition-all duration-200" 
+                 data-counselor-id="${counselor.id}">
+                <div class="flex items-start space-x-3">
+                    <div class="w-12 h-12 ${counselor.color} rounded-full flex items-center justify-center">
+                        <span class="text-white font-semibold">${counselor.image}</span>
+                    </div>
+                    <div class="flex-1">
+                        <h4 class="font-medium text-gray-900">${counselor.name}</h4>
+                        <p class="text-sm text-indigo-600">${counselor.specializationText}</p>
+                        <div class="flex items-center space-x-2 mt-1">
+                            <span class="text-xs text-gray-500">
+                                <i class="fas fa-star text-yellow-400"></i> ${counselor.rating} (${counselor.reviews})
+                            </span>
+                            <span class="text-xs text-gray-500">•</span>
+                            <span class="text-xs text-gray-500">${counselor.availability}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `
+          )
+          .join("");
+
+        // Re-add click event listeners
+        container.querySelectorAll(".counselor-card").forEach((card) => {
+          card.addEventListener("click", (e) => {
+            const counselorId = parseInt(card.dataset.counselorId);
+            this.selectCounselor(counselorId);
+          });
+        });
+      }
+
+      renderCalendar() {
+        const container = document.getElementById("calendar-container");
+        const monthNames = [
+          "January",
+          "February",
+          "March",
+          "April",
+          "May",
+          "June",
+          "July",
+          "August",
+          "September",
+          "October",
+          "November",
+          "December",
+        ];
+
+        const firstDay = new Date(this.currentYear, this.currentMonth, 1);
+        const lastDay = new Date(this.currentYear, this.currentMonth + 1, 0);
+        const daysInMonth = lastDay.getDate();
+        const startingDay = firstDay.getDay();
+
+        let html = `
+            <div class="text-center mb-4">
+                <h4 class="text-lg font-semibold text-gray-900">${monthNames[this.currentMonth]
+          } ${this.currentYear}</h4>
+            </div>
+            <div class="grid grid-cols-7 gap-1 mb-2">
+                <div class="text-center text-sm font-medium text-gray-500 py-2">Sun</div>
+                <div class="text-center text-sm font-medium text-gray-500 py-2">Mon</div>
+                <div class="text-center text-sm font-medium text-gray-500 py-2">Tue</div>
+                <div class="text-center text-sm font-medium text-gray-500 py-2">Wed</div>
+                <div class="text-center text-sm font-medium text-gray-500 py-2">Thu</div>
+                <div class="text-center text-sm font-medium text-gray-500 py-2">Fri</div>
+                <div class="text-center text-sm font-medium text-gray-500 py-2">Sat</div>
+            </div>
+            <div class="grid grid-cols-7 gap-1">
+        `;
+
+        // Empty cells for days before the first day of the month
+        for (let i = 0; i < startingDay; i++) {
+          html += `<div class="h-10"></div>`;
+        }
+
+        // Days of the month
+        for (let day = 1; day <= daysInMonth; day++) {
+          const date = new Date(this.currentYear, this.currentMonth, day);
+          const isToday = this.isToday(date);
+          const isPast = this.isPast(date);
+          const isAvailable = this.isAvailable(date);
+
+          let classes =
+            "h-10 flex items-center justify-center text-sm cursor-pointer rounded-md transition-colors";
+          if (isToday) classes += " bg-indigo-100 text-indigo-600 font-semibold";
+          else if (isPast) classes += " text-gray-400 cursor-not-allowed";
+          else if (isAvailable) classes += " text-gray-700 hover:bg-indigo-50";
+          else classes += " text-gray-400 cursor-not-allowed";
+
+          html += `
+                <div class="${classes}" data-date="${day}" data-available="${isAvailable && !isPast
+            }">
+                    ${day}
+                </div>
+            `;
+        }
+
+        html += `</div>`;
+        container.innerHTML = html;
+
+        // Add click event listeners
+        container.querySelectorAll('[data-available="true"]').forEach((day) => {
+          day.addEventListener("click", (e) =>
+            this.selectDate(parseInt(e.target.dataset.date))
+          );
+        });
+      }
+
+      selectDate(day) {
+        this.selectedDate = new Date(this.currentYear, this.currentMonth, day);
+
+        // Update UI
+        document.querySelectorAll('[data-available="true"]').forEach((el) => {
+          el.classList.remove("bg-indigo-600", "text-white");
+        });
+        event.target.classList.add("bg-indigo-600", "text-white");
+
+        // Show time slots
+        this.showTimeSlots();
+      }
+
+      showTimeSlots() {
+        const container = document.getElementById("time-slots-container");
+        const slotsContainer = document.getElementById("time-slots");
+
+        // Generate time slots (9 AM to 5 PM, 1-hour intervals)
+        const timeSlots = [];
+        for (let hour = 9; hour < 17; hour++) {
+          const timeString = `${hour.toString().padStart(2, "0")}:00`;
+          timeSlots.push(timeString);
+        }
+
+        slotsContainer.innerHTML = timeSlots
+          .map(
+            (time) => `
+            <button class="time-slot p-3 border border-gray-300 rounded-md text-sm hover:border-indigo-500 hover:bg-indigo-50 transition-colors" 
+                    data-time="${time}">
+                ${time}
+            </button>
+        `
+          )
+          .join("");
+
+        // Add click event listeners
+        slotsContainer.querySelectorAll(".time-slot").forEach((slot) => {
+          slot.addEventListener("click", (e) =>
+            this.selectTime(e.target.dataset.time)
+          );
+        });
+
+        container.classList.remove("hidden");
+      }
+
+      selectTime(time) {
+        this.selectedTime = time;
+
+        // Update UI
+        document.querySelectorAll(".time-slot").forEach((slot) => {
+          slot.classList.remove("bg-indigo-600", "text-white");
+        });
+        event.target.classList.add("bg-indigo-600", "text-white");
+
+        // Show booking form
+        this.showBookingForm();
+      }
+
+      showBookingForm() {
+        const container = document.getElementById("booking-form-container");
+
+        // Populate form
+        document.getElementById("selected-date").value =
+          this.selectedDate.toLocaleDateString();
+        document.getElementById("selected-time").value = this.selectedTime;
+
+        container.classList.remove("hidden");
+      }
+
+      submitBooking(e) {
+        e.preventDefault();
+
+        if (!document.getElementById("consent-checkbox").checked) {
+          alert("Please agree to the terms of service to continue.");
+          return;
+        }
+
+        // Simulate booking process
+        const booking = {
+          id: Date.now(),
+          counselor: this.selectedCounselor,
+          date: this.selectedDate,
+          time: this.selectedTime,
+          type: document.getElementById("session-type").value,
+          communication: document.querySelector(
+            'input[name="communication"]:checked'
+          ).value,
+          description: document.getElementById("session-description").value,
+          anonymous: document.getElementById("anonymous-booking").checked,
+        };
+
+        // Save to localStorage
+        const bookings = JSON.parse(localStorage.getItem("bookings") || "[]");
+        bookings.push(booking);
+        localStorage.setItem("bookings", JSON.stringify(bookings));
+
+        // Show confirmation
+        this.showConfirmation(booking);
+      }
+
+      showConfirmation(booking) {
+        document.getElementById("confirm-date").textContent =
+          booking.date.toLocaleDateString();
+        document.getElementById("confirm-time").textContent = booking.time;
+        document.getElementById("confirm-counselor").textContent =
+          booking.counselor.name;
+        document.getElementById("confirm-type").textContent = booking.type;
+
+        document.getElementById("confirmation-modal").classList.remove("hidden");
+        document.getElementById("confirmation-modal").classList.add("flex");
+      }
+
+      closeConfirmation() {
+        document.getElementById("confirmation-modal").classList.add("hidden");
+        document.getElementById("confirmation-modal").classList.remove("flex");
+        this.resetBooking();
+      }
+
+      viewSessions() {
+        this.closeConfirmation();
+        this.loadUpcomingSessions();
+      }
+
+      cancelBooking() {
+        this.resetBooking();
+      }
+
+      resetBooking() {
+        this.selectedDate = null;
+        this.selectedTime = null;
+        document.getElementById("booking-form-container").classList.add("hidden");
+        document.getElementById("time-slots-container").classList.add("hidden");
+        document.getElementById("selected-counselor").classList.add("hidden");
+      }
+
+      changeMonth(direction) {
+        this.currentMonth += direction;
+        if (this.currentMonth < 0) {
+          this.currentMonth = 11;
+          this.currentYear--;
+        } else if (this.currentMonth > 11) {
+          this.currentMonth = 0;
+          this.currentYear++;
+        }
+        this.renderCalendar();
+      }
+
+      isToday(date) {
+        const today = new Date();
+        return date.toDateString() === today.toDateString();
+      }
+
+      isPast(date) {
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        return date < today;
+      }
+
+      isAvailable(date) {
+        // Simple availability check - available on weekdays
+        return date.getDay() >= 1 && date.getDay() <= 5;
+      }
+
+      loadUpcomingSessions() {
+        const bookings = JSON.parse(localStorage.getItem("bookings") || "[]");
+        const container = document.getElementById("upcoming-sessions");
+
+        if (bookings.length === 0) {
+          container.innerHTML = `
+                <div class="text-center text-gray-500 py-4">
+                    <i class="fas fa-calendar-plus text-2xl mb-2"></i>
+                    <p class="text-sm">No upcoming sessions</p>
+                </div>
+            `;
+          return;
+        }
+
+        // Sort by date and show upcoming sessions
+        const upcoming = bookings
+          .filter((booking) => new Date(booking.date) >= new Date())
+          .sort((a, b) => new Date(a.date) - new Date(b.date))
+          .slice(0, 5);
+
+        container.innerHTML = upcoming
+          .map(
+            (booking) => `
+            <div class="p-3 bg-gray-50 rounded-lg mb-2">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h4 class="font-medium text-gray-900">${booking.counselor.name
+              }</h4>
+                        <p class="text-sm text-gray-600">${booking.date.toLocaleDateString()} at ${booking.time
+              }</p>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-xs bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full">${booking.type
+              }</span>
+                    </div>
+                </div>
+            </div>
+        `
+          )
+          .join("");
+      }
+    }
+
+    // Initialize booking system when page loads
+    document.addEventListener("DOMContentLoaded", () => {
+      window.bookingSystem = new BookingSystem();
+    });
+  </script>
+
+</body>
+
+</html>

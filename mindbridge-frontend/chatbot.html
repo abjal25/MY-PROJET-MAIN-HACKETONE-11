@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Chatbot - MindBridge</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/chatbot.css" />
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <img
+            src="assets/images/logo.png"
+            alt="MindBridge Logo"
+            class="logo"
+          />
+          <span class="brand-name">MindBridge</span>
+        </div>
+        <div class="nav-menu" id="nav-menu">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="chatbot.html" class="nav-link active">AI Chatbot</a>
+          <a href="screening.html" class="nav-link">Screening</a>
+          <a href="booking.html" class="nav-link">Book Session</a>
+          <a href="resources.html" class="nav-link">Resources</a>
+          <a href="forum.html" class="nav-link">Forum</a>
+          <a href="dashboard.html" class="nav-link">Dashboard</a>
+        </div>
+        <div class="nav-controls">
+          <select id="language-selector" class="language-selector">
+            <option value="en">English</option>
+            <option value="hi">हिन्दी</option>
+            <option value="gu">ગુજરાતી</option>
+          </select>
+          <button class="login-btn" onclick="showLoginModal()">Login</button>
+          <button class="register-btn" onclick="showRegisterModal()">
+            Register
+          </button>
+          <button class="nav-toggle" id="nav-toggle">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Chatbot Header -->
+    <section class="chatbot-header">
+      <div class="container">
+        <h1>AI Mental Health Assistant</h1>
+        <p>
+          Your confidential companion for mental wellness. I'm here to listen
+          and support you 24/7.
+        </p>
+        <div class="chatbot-controls">
+          <button id="clearChat" class="btn btn-secondary">Clear Chat</button>
+          <button id="escalateBtn" class="btn btn-danger">
+            Talk to a Counselor
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chat Container -->
+    <section class="chat-container">
+      <div class="container">
+        <div class="chat-wrapper">
+          <div class="chat-messages" id="chatMessages">
+            <div class="message bot-message">
+              <div class="message-avatar">
+                <img src="assets/images/bot-avatar.png" alt="AI Assistant" />
+              </div>
+              <div class="message-content">
+                <p>
+                  Hello! I'm your AI mental health assistant. I'm here to listen
+                  and support you. How are you feeling today?
+                </p>
+                <div class="message-time">Just now</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sentiment Indicator -->
+          <div class="sentiment-indicator" id="sentimentIndicator">
+            <div class="sentiment-label">Mood Detection:</div>
+            <div class="sentiment-bar">
+              <div class="sentiment-fill" id="sentimentFill"></div>
+            </div>
+            <div class="sentiment-text" id="sentimentText">Neutral</div>
+          </div>
+
+          <!-- Chat Input -->
+          <div class="chat-input-container">
+            <div class="chat-input-wrapper">
+              <input
+                type="text"
+                id="chatInput"
+                placeholder="Type your message here..."
+                maxlength="500"
+              />
+              <button id="sendBtn" class="send-btn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M2 21L23 12L2 3V10L17 12L2 14V21Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div class="input-actions">
+              <button class="action-btn" id="voiceBtn" title="Voice Input">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M12 1C10.34 1 9 2.34 9 4V12C9 13.66 10.34 15 12 15C13.66 15 15 13.66 15 12V4C15 2.34 13.66 1 12 1Z"
+                    fill="currentColor"
+                  />
+                  <path
+                    d="M19 10V12C19 15.87 15.87 19 12 19C8.13 19 5 15.87 5 12V10H7V12C7 14.76 9.24 17 12 17C14.76 17 17 14.76 17 12V10H19Z"
+                    fill="currentColor"
+                  />
+                  <path d="M11 22H13V24H11V22Z" fill="currentColor" />
+                </svg>
+              </button>
+              <button class="action-btn" id="emojiBtn" title="Add Emoji">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="12" r="10" fill="currentColor" />
+                  <path
+                    d="M8 14S9.5 16 12 16S16 14 16 14"
+                    stroke="white"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                  <circle cx="9" cy="9" r="1" fill="white" />
+                  <circle cx="15" cy="9" r="1" fill="white" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Quick Response Buttons -->
+          <div class="quick-responses" id="quickResponses">
+            <button
+              class="quick-response-btn"
+              data-message="I'm feeling anxious"
+            >
+              I'm feeling anxious
+            </button>
+            <button
+              class="quick-response-btn"
+              data-message="I'm feeling depressed"
+            >
+              I'm feeling depressed
+            </button>
+            <button
+              class="quick-response-btn"
+              data-message="I need help with stress"
+            >
+              I need help with stress
+            </button>
+            <button
+              class="quick-response-btn"
+              data-message="I'm having relationship issues"
+            >
+              I'm having relationship issues
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Escalation Modal -->
+    <div id="escalationModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('escalationModal')"
+          >&times;</span
+        >
+        <h2>Connect with a Counselor</h2>
+        <p>
+          I understand you'd like to speak with a human counselor. This is a
+          great step towards getting the support you need.
+        </p>
+        <div class="escalation-options">
+          <div class="escalation-option">
+            <h3>Book a Session</h3>
+            <p>
+              Schedule a confidential one-on-one session with a licensed
+              counselor.
+            </p>
+            <button
+              class="btn btn-primary"
+              onclick="window.location.href='booking.html'"
+            >
+              Book Now
+            </button>
+          </div>
+          <div class="escalation-option">
+            <h3>Crisis Support</h3>
+            <p>
+              If you're in immediate distress, please contact emergency
+              services.
+            </p>
+            <div class="crisis-contacts">
+              <p><strong>National Helpline:</strong> 1800-599-0019</p>
+              <p><strong>Emergency:</strong> 108</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Emoji Picker -->
+    <div id="emojiPicker" class="emoji-picker">
+      <div class="emoji-grid">
+        <button class="emoji-btn" data-emoji="😊">😊</button>
+        <button class="emoji-btn" data-emoji="😢">😢</button>
+        <button class="emoji-btn" data-emoji="😰">😰</button>
+        <button class="emoji-btn" data-emoji="😴">😴</button>
+        <button class="emoji-btn" data-emoji="😤">😤</button>
+        <button class="emoji-btn" data-emoji="😌">😌</button>
+        <button class="emoji-btn" data-emoji="🤗">🤗</button>
+        <button class="emoji-btn" data-emoji="💪">💪</button>
+      </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/chatbot.js"></script>
+  </body>
+</html>

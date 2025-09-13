@@ -1,0 +1,67 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "Articles",
+      "items": [
+        {
+          "id": 101,
+          "title": "Understanding Anxiety",
+          "description": "A comprehensive guide to understanding anxiety disorders and their symptoms.",
+          "type": "article",
+          "url": "#",
+          "duration": "5 min read",
+          "tags": ["anxiety", "mental health", "education"]
+        },
+        {
+          "id": 102,
+          "title": "Mindfulness Techniques",
+          "description": "Learn simple mindfulness exercises to reduce stress and improve focus.",
+          "type": "article",
+          "url": "#",
+          "duration": "7 min read",
+          "tags": ["mindfulness", "stress relief", "meditation"]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Videos",
+      "items": [
+        {
+          "id": 201,
+          "title": "Breathing Exercises for Stress Relief",
+          "description": "10-minute guided breathing exercise to help reduce anxiety.",
+          "type": "video",
+          "url": "#",
+          "duration": "10:32",
+          "thumbnail": "images/breathing-exercise.jpg"
+        },
+        {
+          "id": 202,
+          "title": "Yoga for Beginners",
+          "description": "Gentle yoga routine to help relax your mind and body.",
+          "type": "video",
+          "url": "#",
+          "duration": "15:45",
+          "thumbnail": "images/yoga-beginners.jpg"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Podcasts",
+      "items": [
+        {
+          "id": 301,
+          "title": "The Mental Health Hour",
+          "description": "Weekly discussions on mental health topics with experts.",
+          "type": "audio",
+          "url": "#",
+          "duration": "45:18",
+          "host": "Dr. Sarah Johnson"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MindBridge - Empowering Student Mental Health with AI</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#4F46E5" />
+    <meta
+      name="description"
+      content="Digital mental health support system for students - AI-powered chatbot, screening tools, counselor booking, and peer support forum"
+    />
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <img
+            src="assets/images/logo.png"
+            alt="MindBridge Logo"
+            class="logo"
+          />
+          <span class="brand-name">MindBridge</span>
+        </div>
+        <div class="nav-menu" id="nav-menu">
+          <a href="index.html" class="nav-link active">Home</a>
+          <a href="chatbot.html" class="nav-link">AI Chatbot</a>
+          <a href="screening.html" class="nav-link">Screening</a>
+          <a href="booking.html" class="nav-link">Book Session</a>
+          <a href="resources.html" class="nav-link">Resources</a>
+          <a href="forum.html" class="nav-link">Forum</a>
+          <a href="dashboard.html" class="nav-link">Dashboard</a>
+        </div>
+        <div class="nav-controls">
+          <select id="language-selector" class="language-selector">
+            <option value="en">English</option>
+            <option value="hi">हिन्दी</option>
+            <option value="gu">ગુજરાતી</option>
+          </select>
+          <button class="login-btn" onclick="showLoginModal()">Login</button>
+          <button class="register-btn" onclick="showRegisterModal()">
+            Register
+          </button>
+          <button class="nav-toggle" id="nav-toggle">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-container">
+        <div class="hero-content">
+          <h1 class="hero-title">Empowering Student Mental Health with AI</h1>
+          <p class="hero-subtitle">
+            Your confidential companion for mental wellness. Get instant
+            support, professional guidance, and connect with a community that
+            understands.
+          </p>
+          <div class="hero-buttons">
+            <button
+              class="btn btn-primary"
+              onclick="window.location.href='chatbot.html'"
+            >
+              Start Chatting
+            </button>
+            <button
+              class="btn btn-secondary"
+              onclick="window.location.href='screening.html'"
+            >
+              Take Assessment
+            </button>
+          </div>
+        </div>
+        <div class="hero-image">
+          <img
+            src="assets/images/hero-illustration.png"
+            alt="Mental Health Support Illustration"
+            class="hero-illustration"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+      <div class="container">
+        <h2 class="section-title">How MindBridge Helps You</h2>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">🤖</div>
+            <h3>AI Chatbot</h3>
+            <p>
+              24/7 confidential support with our intelligent chatbot that
+              understands your emotions and provides immediate guidance.
+            </p>
+            <a href="chatbot.html" class="feature-link">Try Now →</a>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">📊</div>
+            <h3>Mental Health Screening</h3>
+            <p>
+              Take validated PHQ-9 and GAD-7 assessments to understand your
+              mental health status and get personalized recommendations.
+            </p>
+            <a href="screening.html" class="feature-link">Take Assessment →</a>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">👨‍⚕️</div>
+            <h3>Professional Counseling</h3>
+            <p>
+              Book sessions with licensed counselors who specialize in student
+              mental health. Anonymous booking available.
+            </p>
+            <a href="booking.html" class="feature-link">Book Session →</a>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">📚</div>
+            <h3>Resource Hub</h3>
+            <p>
+              Access curated self-help materials, guided meditations, articles,
+              and videos in multiple languages.
+            </p>
+            <a href="resources.html" class="feature-link"
+              >Explore Resources →</a
+            >
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">👥</div>
+            <h3>Peer Support Forum</h3>
+            <p>
+              Connect anonymously with other students facing similar challenges.
+              Share experiences and support each other.
+            </p>
+            <a href="forum.html" class="feature-link">Join Forum →</a>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">📈</div>
+            <h3>Progress Tracking</h3>
+            <p>
+              Monitor your mental health journey with personalized insights and
+              progress tracking tools.
+            </p>
+            <a href="dashboard.html" class="feature-link">View Dashboard →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="stats">
+      <div class="container">
+        <h2 class="section-title">Making a Difference</h2>
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-number">10,000+</div>
+            <div class="stat-label">Students Helped</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">95%</div>
+            <div class="stat-label">Satisfaction Rate</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">24/7</div>
+            <div class="stat-label">Available Support</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">50+</div>
+            <div class="stat-label">Expert Counselors</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+      <div class="container">
+        <h2 class="section-title">What Students Say</h2>
+        <div class="testimonials-grid">
+          <div class="testimonial-card">
+            <div class="testimonial-content">
+              <p>
+                "MindBridge helped me understand my anxiety better. The chatbot
+                was so understanding and the counselor I spoke to was amazing."
+              </p>
+            </div>
+            <div class="testimonial-author">
+              <div class="author-info">
+                <span class="author-name">Priya S.</span>
+                <span class="author-role">Computer Science Student</span>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-content">
+              <p>
+                "The anonymous forum gave me a safe space to share my struggles.
+                I found so much support from other students going through
+                similar experiences."
+              </p>
+            </div>
+            <div class="testimonial-author">
+              <div class="author-info">
+                <span class="author-name">Arjun M.</span>
+                <span class="author-role">Engineering Student</span>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-content">
+              <p>
+                "The screening tools helped me realize I needed professional
+                help. The booking process was so easy and the counselor was very
+                supportive."
+              </p>
+            </div>
+            <div class="testimonial-author">
+              <div class="author-info">
+                <span class="author-name">Sneha K.</span>
+                <span class="author-role">Medical Student</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>MindBridge</h3>
+            <p>
+              Empowering student mental health through technology and community
+              support.
+            </p>
+            <div class="social-links">
+              <a href="#" class="social-link">Facebook</a>
+              <a href="#" class="social-link">Twitter</a>
+              <a href="#" class="social-link">Instagram</a>
+              <a href="#" class="social-link">LinkedIn</a>
+            </div>
+          </div>
+          <div class="footer-section">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="chatbot.html">AI Chatbot</a></li>
+              <li><a href="screening.html">Mental Health Screening</a></li>
+              <li><a href="booking.html">Book Counseling</a></li>
+              <li><a href="resources.html">Resources</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4>Support</h4>
+            <ul>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Service</a></li>
+              <li><a href="#">Crisis Support</a></li>
+              <li><a href="#">Contact Us</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4>Emergency</h4>
+            <p>If you're in crisis, please contact:</p>
+            <p><strong>National Helpline:</strong> 1800-599-0019</p>
+            <p><strong>Emergency:</strong> 108</p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>
+            &copy; 2024 MindBridge. All rights reserved. | Smart India Hackathon
+            2025 - SIH25092
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('loginModal')">&times;</span>
+        <h2>Login to MindBridge</h2>
+        <form id="loginForm">
+          <div class="form-group">
+            <label for="loginEmail">Email</label>
+            <input type="email" id="loginEmail" required />
+          </div>
+          <div class="form-group">
+            <label for="loginPassword">Password</label>
+            <input type="password" id="loginPassword" required />
+          </div>
+          <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+        <p>
+          Don't have an account?
+          <a href="#" onclick="showRegisterModal()">Register here</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="registerModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('registerModal')">&times;</span>
+        <h2>Join MindBridge</h2>
+        <form id="registerForm">
+          <div class="form-group">
+            <label for="registerName">Full Name</label>
+            <input type="text" id="registerName" required />
+          </div>
+          <div class="form-group">
+            <label for="registerEmail">Email</label>
+            <input type="email" id="registerEmail" required />
+          </div>
+          <div class="form-group">
+            <label for="registerPassword">Password</label>
+            <input type="password" id="registerPassword" required />
+          </div>
+          <div class="form-group">
+            <label for="registerInstitution">Institution</label>
+            <input type="text" id="registerInstitution" required />
+          </div>
+          <button type="submit" class="btn btn-primary">Register</button>
+        </form>
+        <p>
+          Already have an account?
+          <a href="#" onclick="showLoginModal()">Login here</a>
+        </p>
+      </div>
+    </div>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>

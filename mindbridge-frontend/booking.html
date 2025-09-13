@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book Counseling Session - MindBridge</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/booking.css" />
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <img
+            src="assets/images/logo.png"
+            alt="MindBridge Logo"
+            class="logo"
+          />
+          <span class="brand-name">MindBridge</span>
+        </div>
+        <div class="nav-menu" id="nav-menu">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="chatbot.html" class="nav-link">AI Chatbot</a>
+          <a href="screening.html" class="nav-link">Screening</a>
+          <a href="booking.html" class="nav-link active">Book Session</a>
+          <a href="resources.html" class="nav-link">Resources</a>
+          <a href="forum.html" class="nav-link">Forum</a>
+          <a href="dashboard.html" class="nav-link">Dashboard</a>
+        </div>
+        <div class="nav-controls">
+          <select id="language-selector" class="language-selector">
+            <option value="en">English</option>
+            <option value="hi">हिन्दी</option>
+            <option value="gu">ગુજરાતી</option>
+          </select>
+          <button class="login-btn" onclick="showLoginModal()">Login</button>
+          <button class="register-btn" onclick="showRegisterModal()">
+            Register
+          </button>
+          <button class="nav-toggle" id="nav-toggle">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Booking Header -->
+    <section class="booking-header">
+      <div class="container">
+        <h1>Book a Counseling Session</h1>
+        <p>
+          Connect with licensed mental health professionals who specialize in
+          student mental health. All sessions are confidential and secure.
+        </p>
+      </div>
+    </section>
+
+    <!-- Booking Steps -->
+    <section class="booking-steps">
+      <div class="container">
+        <div class="steps-indicator">
+          <div class="step active" data-step="1">
+            <div class="step-number">1</div>
+            <div class="step-label">Choose Counselor</div>
+          </div>
+          <div class="step" data-step="2">
+            <div class="step-number">2</div>
+            <div class="step-label">Select Date & Time</div>
+          </div>
+          <div class="step" data-step="3">
+            <div class="step-number">3</div>
+            <div class="step-label">Session Details</div>
+          </div>
+          <div class="step" data-step="4">
+            <div class="step-number">4</div>
+            <div class="step-label">Confirmation</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Step 1: Choose Counselor -->
+    <section class="booking-step" id="step1">
+      <div class="container">
+        <div class="step-content">
+          <h2>Select Your Counselor</h2>
+          <p>
+            Choose a counselor based on their specialization, language, and
+            availability.
+          </p>
+
+          <div class="counselor-filters">
+            <div class="filter-group">
+              <label for="specializationFilter">Specialization:</label>
+              <select id="specializationFilter">
+                <option value="">All Specializations</option>
+                <option value="anxiety">Anxiety & Stress</option>
+                <option value="depression">Depression</option>
+                <option value="relationships">Relationships</option>
+                <option value="academic">Academic Stress</option>
+                <option value="trauma">Trauma & PTSD</option>
+              </select>
+            </div>
+            <div class="filter-group">
+              <label for="languageFilter">Language:</label>
+              <select id="languageFilter">
+                <option value="">All Languages</option>
+                <option value="english">English</option>
+                <option value="hindi">Hindi</option>
+                <option value="gujarati">Gujarati</option>
+              </select>
+            </div>
+            <div class="filter-group">
+              <label for="availabilityFilter">Availability:</label>
+              <select id="availabilityFilter">
+                <option value="">All Times</option>
+                <option value="morning">Morning (9 AM - 12 PM)</option>
+                <option value="afternoon">Afternoon (12 PM - 5 PM)</option>
+                <option value="evening">Evening (5 PM - 9 PM)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="counselors-grid" id="counselorsGrid">
+            <!-- Counselors will be dynamically loaded -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Step 2: Select Date & Time -->
+    <section class="booking-step" id="step2" style="display: none">
+      <div class="container">
+        <div class="step-content">
+          <h2>Choose Date & Time</h2>
+          <p>Select your preferred date and time for the counseling session.</p>
+
+          <div class="datetime-selection">
+            <div class="date-picker-container">
+              <h3>Select Date</h3>
+              <div class="calendar-container">
+                <div class="calendar-header">
+                  <button id="prevMonth" class="calendar-nav">‹</button>
+                  <h4 id="currentMonth"></h4>
+                  <button id="nextMonth" class="calendar-nav">›</button>
+                </div>
+                <div class="calendar-grid" id="calendarGrid">
+                  <!-- Calendar will be dynamically generated -->
+                </div>
+              </div>
+            </div>
+
+            <div class="time-picker-container">
+              <h3>Available Times</h3>
+              <div class="time-slots" id="timeSlots">
+                <!-- Time slots will be dynamically generated -->
+              </div>
+            </div>
+          </div>
+
+          <div class="session-type">
+            <h3>Session Type</h3>
+            <div class="session-options">
+              <label class="session-option">
+                <input type="radio" name="sessionType" value="video" checked />
+                <div class="session-card">
+                  <div class="session-icon">📹</div>
+                  <h4>Video Call</h4>
+                  <p>Face-to-face video session</p>
+                  <span class="session-duration">50 minutes</span>
+                </div>
+              </label>
+              <label class="session-option">
+                <input type="radio" name="sessionType" value="phone" />
+                <div class="session-card">
+                  <div class="session-icon">📞</div>
+                  <h4>Phone Call</h4>
+                  <p>Audio-only session</p>
+                  <span class="session-duration">50 minutes</span>
+                </div>
+              </label>
+              <label class="session-option">
+                <input type="radio" name="sessionType" value="chat" />
+                <div class="session-card">
+                  <div class="session-icon">💬</div>
+                  <h4>Text Chat</h4>
+                  <p>Real-time messaging</p>
+                  <span class="session-duration">30 minutes</span>
+                </div>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Step 3: Session Details -->
+    <section class="booking-step" id="step3" style="display: none">
+      <div class="container">
+        <div class="step-content">
+          <h2>Session Details</h2>
+          <p>
+            Please provide some information to help your counselor prepare for
+            the session.
+          </p>
+
+          <form id="sessionDetailsForm" class="session-form">
+            <div class="form-section">
+              <h3>Personal Information</h3>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="firstName">First Name *</label>
+                  <input type="text" id="firstName" required />
+                </div>
+                <div class="form-group">
+                  <label for="lastName">Last Name *</label>
+                  <input type="text" id="lastName" required />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" required />
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" />
+              </div>
+            </div>
+
+            <div class="form-section">
+              <h3>Session Preferences</h3>
+              <div class="form-group">
+                <label for="sessionGoals"
+                  >What would you like to focus on in this session?</label
+                >
+                <textarea
+                  id="sessionGoals"
+                  rows="4"
+                  placeholder="Please share what you'd like to discuss or work on during the session..."
+                ></textarea>
+              </div>
+              <div class="form-group">
+                <label for="previousCounseling"
+                  >Have you had counseling before?</label
+                >
+                <select id="previousCounseling">
+                  <option value="">Select an option</option>
+                  <option value="yes">
+                    Yes, I have experience with counseling
+                  </option>
+                  <option value="no">No, this is my first time</option>
+                  <option value="prefer-not-to-say">Prefer not to say</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="checkbox-label">
+                  <input type="checkbox" id="anonymousBooking" />
+                  <span class="checkmark"></span>
+                  Book anonymously (counselor will not see your personal
+                  information)
+                </label>
+              </div>
+            </div>
+
+            <div class="form-section">
+              <h3>Emergency Contact</h3>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="emergencyName">Emergency Contact Name</label>
+                  <input type="text" id="emergencyName" />
+                </div>
+                <div class="form-group">
+                  <label for="emergencyPhone">Emergency Contact Phone</label>
+                  <input type="tel" id="emergencyPhone" />
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Step 4: Confirmation -->
+    <section class="booking-step" id="step4" style="display: none">
+      <div class="container">
+        <div class="step-content">
+          <h2>Confirm Your Booking</h2>
+          <p>Please review your session details before confirming.</p>
+
+          <div class="booking-summary">
+            <div class="summary-card">
+              <h3>Session Details</h3>
+              <div class="summary-item">
+                <span class="summary-label">Counselor:</span>
+                <span class="summary-value" id="summaryCounselor"
+                  >Dr. Sarah Johnson</span
+                >
+              </div>
+              <div class="summary-item">
+                <span class="summary-label">Date:</span>
+                <span class="summary-value" id="summaryDate"
+                  >March 15, 2024</span
+                >
+              </div>
+              <div class="summary-item">
+                <span class="summary-label">Time:</span>
+                <span class="summary-value" id="summaryTime"
+                  >2:00 PM - 2:50 PM</span
+                >
+              </div>
+              <div class="summary-item">
+                <span class="summary-label">Type:</span>
+                <span class="summary-value" id="summaryType">Video Call</span>
+              </div>
+              <div class="summary-item">
+                <span class="summary-label">Duration:</span>
+                <span class="summary-value" id="summaryDuration"
+                  >50 minutes</span
+                >
+              </div>
+            </div>
+
+            <div class="summary-card">
+              <h3>Contact Information</h3>
+              <div class="summary-item">
+                <span class="summary-label">Name:</span>
+                <span class="summary-value" id="summaryName">John Doe</span>
+              </div>
+              <div class="summary-item">
+                <span class="summary-label">Email:</span>
+                <span class="summary-value" id="summaryEmail"
+                  >john.doe@email.com</span
+                >
+              </div>
+              <div class="summary-item">
+                <span class="summary-label">Phone:</span>
+                <span class="summary-value" id="summaryPhone"
+                  >+91 98765 43210</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="booking-actions">
+            <button class="btn btn-primary" id="confirmBooking">
+              Confirm Booking
+            </button>
+            <button class="btn btn-secondary" onclick="goToStep(3)">
+              Edit Details
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Booking Success Modal -->
+    <div id="bookingSuccessModal" class="modal">
+      <div class="modal-content success-modal">
+        <div class="success-icon">✅</div>
+        <h2>Booking Confirmed!</h2>
+        <p>
+          Your counseling session has been successfully booked. You will receive
+          a confirmation email and SMS shortly.
+        </p>
+        <div class="booking-details">
+          <h3>Session Details</h3>
+          <p>
+            <strong>Date:</strong> <span id="successDate">March 15, 2024</span>
+          </p>
+          <p>
+            <strong>Time:</strong>
+            <span id="successTime">2:00 PM - 2:50 PM</span>
+          </p>
+          <p>
+            <strong>Counselor:</strong>
+            <span id="successCounselor">Dr. Sarah Johnson</span>
+          </p>
+          <p>
+            <strong>Session Link:</strong>
+            <a href="#" id="sessionLink">Click here to join</a>
+          </p>
+        </div>
+        <div class="success-actions">
+          <button
+            class="btn btn-primary"
+            onclick="closeModal('bookingSuccessModal')"
+          >
+            Done
+          </button>
+          <button
+            class="btn btn-secondary"
+            onclick="window.location.href='dashboard.html'"
+          >
+            View Dashboard
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation Buttons -->
+    <div class="booking-navigation">
+      <div class="container">
+        <div class="nav-buttons">
+          <button
+            id="prevStep"
+            class="btn btn-secondary"
+            onclick="previousStep()"
+            style="display: none"
+          >
+            Previous
+          </button>
+          <button id="nextStep" class="btn btn-primary" onclick="nextStep()">
+            Next
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/booking.js"></script>
+  </body>
+</html>
